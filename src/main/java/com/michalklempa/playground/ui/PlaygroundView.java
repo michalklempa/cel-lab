@@ -3,6 +3,12 @@ package com.michalklempa.playground.ui;
 import com.michalklempa.base.ui.ViewTitle;
 import com.michalklempa.playground.MessageService;
 import com.michalklempa.playground.CelService;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.splitlayout.SplitLayout;
 import com.vaadin.flow.router.Menu;
@@ -18,14 +24,18 @@ class PlaygroundView extends VerticalLayout {
         add(new ViewTitle("CEL Expression Evaluation Playground"));
 
         var message = new Message(messageService);
-        var exp = new Expression(messageService, celService);
+        var expression = new Expression(messageService, celService);
         var evaluation = new Evaluation(messageService, celService);
 
-        var columns = new SplitLayout(exp, evaluation);
+        var columns = new SplitLayout(expression, evaluation);
         columns.setOrientation(SplitLayout.Orientation.HORIZONTAL);
         columns.setWidthFull();
 
-        add(message, columns);
-        setFlexGrow(1, columns);
+        var split = new VerticalLayout(message, columns);
+        split.setWidthFull();
+        split.setFlexGrow(1, columns);
+
+        add(split);
+        setFlexGrow(1, split);
     }
 }

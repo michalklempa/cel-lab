@@ -7,6 +7,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.TypeRegistry;
 import com.vaadin.flow.spring.annotation.UIScope;
 import dev.cel.common.CelDescriptorUtil;
+import io.confluent.kafka.schemaregistry.protobuf.ProtobufSchema;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -105,5 +106,9 @@ public class MessageService {
         for (Consumer<SelectResult> consumer : onSelectListeners) {
             consumer.accept(selectResult);
         }
+    }
+
+    public String schema() {
+        return new ProtobufSchema(selected).canonicalString();
     }
 }

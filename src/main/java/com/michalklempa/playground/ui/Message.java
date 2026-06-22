@@ -5,9 +5,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.card.Card;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.html.Anchor;
-import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.notification.NotificationVariant;
@@ -19,8 +17,6 @@ import com.vaadin.flow.component.popover.PopoverVariant;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.server.streams.InMemoryUploadCallback;
 import com.vaadin.flow.server.streams.UploadHandler;
-
-import java.util.List;
 
 class Message extends Card {
 
@@ -82,6 +78,7 @@ class Message extends Card {
         type.addValueChangeListener(e -> {
             messageService.select(e.getValue());
         });
+
         type.setRequired(true);
         type.setEnabled(false);
 
@@ -94,5 +91,8 @@ class Message extends Card {
         row.setFlexGrow(1, typeSection);
 
         add(row);
+
+        var schema = new Schema(messageService);
+        add(schema);
     }
 }

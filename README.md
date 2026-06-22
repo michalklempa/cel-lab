@@ -1,4 +1,11 @@
 # cel-lab
+## Run using Docker
+
+```shell
+docker run --rm -p 8081:8081 michalklempa/cel-lab:latest
+```
+
+Browse to [localhost:8081](http://localhost:8081)
 
 ## Project Structure
 
