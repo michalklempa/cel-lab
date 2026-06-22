@@ -24,6 +24,7 @@ class Expression extends VerticalLayout {
 
         TextArea expression = new TextArea("Expression");
         expression.setWidthFull();
+        expression.setPlaceholder("event.something > 7.0");
         expression.setValueChangeMode(ValueChangeMode.LAZY);
         expression.addValueChangeListener(e -> celService.compile(expression.getValue()));
 
