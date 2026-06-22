@@ -15,7 +15,6 @@ import com.vaadin.flow.router.Route;
 class PlaygroundView extends VerticalLayout {
 
     PlaygroundView(MessageService messageService, CelService celService) {
-        setSizeFull();
         add(new ViewTitle("CEL Expression Evaluation Playground"));
 
         var message = new Message(messageService);
@@ -24,8 +23,9 @@ class PlaygroundView extends VerticalLayout {
 
         var columns = new SplitLayout(exp, evaluation);
         columns.setOrientation(SplitLayout.Orientation.HORIZONTAL);
-        columns.setSizeFull();
+        columns.setWidthFull();
 
         add(message, columns);
+        setFlexGrow(1, columns);
     }
 }

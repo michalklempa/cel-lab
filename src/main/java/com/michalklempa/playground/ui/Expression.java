@@ -10,16 +10,10 @@ class Expression extends VerticalLayout {
 
 
     Expression(MessageService messageService, CelService celService) {
-        setSizeFull();
+        setWidthFull();
         setEnabled(false);
 
         messageService.onSelectListeners.add(selectResult -> setEnabled(selectResult.success));
-
-        TextArea expression = new TextArea("Expression");
-        expression.setWidthFull();
-        expression.setValueChangeMode(ValueChangeMode.LAZY);
-        expression.addValueChangeListener(e -> celService.compile(expression.getValue()));
-        add(expression);
 
         TextArea compilation = new TextArea("Compilation result");
         compilation.setWidthFull();
@@ -27,7 +21,14 @@ class Expression extends VerticalLayout {
         celService.onCompileListeners.add(compilationResult -> {
             compilation.setValue(compilationResult.message);
         });
+
+        TextArea expression = new TextArea("Expression");
+        expression.setWidthFull();
+        expression.setValueChangeMode(ValueChangeMode.LAZY);
+        expression.addValueChangeListener(e -> celService.compile(expression.getValue()));
+
         add(compilation);
+        add(expression);
 
         setFlexGrow(1, expression);
     }
