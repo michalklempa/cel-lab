@@ -32,7 +32,7 @@ jobs:
           cache: maven
 
       - name: Build app-image
-        run: mvn -B "-P${{ matrix.profiles }}" -Dvaadin.force.production.build=true -DskipTests clean package
+        run: mvn -B "-P${{ matrix.profiles }}" -DskipTests clean package
 
       - name: Archive (Linux)
         if: runner.os == 'Linux'

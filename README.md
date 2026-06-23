@@ -77,11 +77,11 @@ Bundles the app with a Java runtime into a self-contained launcher. Requires
 Linux — launcher at `target/dist/cel-lab/bin/cel-lab`:
 
 ```bash
-mvn -Plinux-jpackage -Dvaadin.force.production.build=true -DskipTests clean package
+mvn -Plinux-jpackage -DskipTests clean package
 ```
 
 Windows — adds `--win-console`; launcher at `target\dist\cel-lab\cel-lab.exe`:
 
 ```bash
-mvn -Pwindows-jpackage -Dvaadin.force.production.build=true -DskipTests clean package
+mvn -Pwindows-jpackage -DskipTests clean package
 ```

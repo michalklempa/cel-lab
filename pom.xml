@@ -170,6 +170,9 @@
     <profiles>
         <profile>
             <id>linux-jpackage</id>
+            <properties>
+                <vaadin.force.production.build>true</vaadin.force.production.build>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -181,6 +184,9 @@
         </profile>
         <profile>
             <id>windows-jpackage</id>
+            <properties>
+                <vaadin.force.production.build>true</vaadin.force.production.build>
+            </properties>
             <build>
                 <plugins>
                     <plugin>
