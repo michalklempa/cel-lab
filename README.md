@@ -7,6 +7,30 @@ docker run --rm -p 8081:8081 michalklempa/cel-lab:latest
 
 Browse to [localhost:8081](http://localhost:8081)
 
+## Obtaining a `.desc` File for the UI
+
+The UI evaluates CEL expressions against a message type loaded from a Protobuf
+descriptor set (`FileDescriptorSet`, conventionally a `.desc` file). Upload one
+in the UI, then pick the message type to evaluate against.
+
+Generate the descriptor with `protoc`:
+
+```bash
+protoc --descriptor_set_out=out.desc --include_imports *.proto
+```
+
+- `--descriptor_set_out` is the output `.desc` path.
+- `--include_imports` is **required** — it bundles every transitive import into a
+  single self-contained file. Without it, CEL cannot resolve types referenced
+  across `.proto` files and the upload will fail.
+
+Any tool that emits a `FileDescriptorSet` works as well, for example
+[Buf](https://buf.build):
+
+```bash
+buf build -o out.desc
+```
+
 ## Project Structure
 
 Source code for the UI part is located at:
