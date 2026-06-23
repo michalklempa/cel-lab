@@ -68,3 +68,20 @@ To build a Docker image, run:
 ```bash
 docker build -t my-application:latest .
 ```
+
+## Native Application Image (jpackage)
+
+Bundles the app with a Java runtime into a self-contained launcher. Requires
+**JDK 25** active; build on the OS/arch you target (no cross-compilation).
+
+Linux — launcher at `target/dist/cel-lab/bin/cel-lab`:
+
+```bash
+mvn -Plinux-jpackage -Dvaadin.force.production.build=true -DskipTests clean package
+```
+
+Windows — adds `--win-console`; launcher at `target\dist\cel-lab\cel-lab.exe`:
+
+```bash
+mvn -Pwindows-jpackage -Dvaadin.force.production.build=true -DskipTests clean package
+```

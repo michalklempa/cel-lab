@@ -138,6 +138,33 @@
                 </executions>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.panteleyev</groupId>
+                    <artifactId>jpackage-maven-plugin</artifactId>
+                    <version>1.6.5</version>
+                    <configuration>
+                        <type>APP_IMAGE</type>
+                        <name>cel-lab</name>
+                        <appVersion>1.0.0</appVersion>
+                        <input>${project.build.directory}/jpackage-in</input>
+                        <mainJar>${project.build.finalName}.jar</mainJar>
+                        <mainClass>org.springframework.boot.loader.launch.JarLauncher</mainClass>
+                        <destination>${project.build.directory}/dist</destination>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>jpackage</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jpackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <profiles>
@@ -148,25 +175,6 @@
                     <plugin>
                         <groupId>org.panteleyev</groupId>
                         <artifactId>jpackage-maven-plugin</artifactId>
-                        <version>1.6.5</version>
-                        <executions>
-                            <execution>
-                                <id>jpackage</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>jpackage</goal>
-                                </goals>
-                                <configuration>
-                                    <type>APP_IMAGE</type>
-                                    <name>cel-lab</name>
-                                    <appVersion>1.0.0</appVersion>
-                                    <input>${project.build.directory}/jpackage-in</input>
-                                    <mainJar>${project.build.finalName}.jar</mainJar>
-                                    <mainClass>org.springframework.boot.loader.launch.JarLauncher</mainClass>
-                                    <destination>${project.build.directory}/dist</destination>
-                                </configuration>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -178,7 +186,6 @@
                     <plugin>
                         <groupId>org.panteleyev</groupId>
                         <artifactId>jpackage-maven-plugin</artifactId>
-                        <version>1.6.5</version>
                         <configuration>
                             <winConsole>true</winConsole>
                         </configuration>
